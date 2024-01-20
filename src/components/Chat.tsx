@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
 import { Input, Button, Row, Col } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 
@@ -18,12 +19,23 @@ export function Chat() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("/api/chat", {
-        content: inputText,
-        recipientName,
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          context: emailContext,
+          content: inputText,
+          recipientName,
+        }),
       });
-      const response = res?.data?.result?.choices?.[0]?.message?.content;
+      const runner = ChatCompletionStream.fromReadableStream(res?.body);
+
+      const result = await runner.finalChatCompletion();
+      const response = result?.choices?.[0]?.message?.content;
       const parsedResponse = JSON.parse(response);
+
       setEmailBody(parsedResponse?.body);
       setEmailSubject(parsedResponse?.subject);
     } catch (error) {
@@ -40,6 +52,7 @@ export function Chat() {
         body: emailBody,
         recipientName,
       });
+      console.log(response);
       // const { data } = await supabase.from("emails").insert({
       //   recipient: emailAddress,
       //   subject: emailSubject,
@@ -73,7 +86,7 @@ export function Chat() {
             autoSize={{ minRows: 3, maxRows: 5 }}
           />
           <Button type="primary" onClick={handleSubmit}>
-            Submit
+            Generate
           </Button>
         </div>
       </Col>
