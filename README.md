@@ -8,25 +8,25 @@ In this tutorial, I'll walk you through setting up authentication in your Next.j
 
 - Setup the Next.js 13 Project
 - Setup Next Auth API Route
-    - Create Reusable Buttons
+  - Create Reusable Buttons
 - Three Ways of Getting the NextAuth Session Data
-    - Get the Session in a Server Component
-    - Get the Session in an API Route
-    - Get the Session in a Client Component
+  - Get the Session in a Server Component
+  - Get the Session in an API Route
+  - Get the Session in a Client Component
 - Integrate a Database
-    - Setup PostgreSQL
-    - Setup Prisma ORM
+  - Setup PostgreSQL
+  - Setup Prisma ORM
 - Implement the NextAuth Authentication Code
 - Store Custom Keys in the JWT
 - Different Ways to Protect Routes
-    - Client-Side Route Protection
-    - Server-Side Route Protection
-    - Protect an API Route
-    - Middleware Route Protection
+  - Client-Side Route Protection
+  - Server-Side Route Protection
+  - Protect an API Route
+  - Middleware Route Protection
 - Implement the Account Registration Logic
-    - Create the API Route to Register Users
-    - Create the Form Component
-    - Create the Account Registration Page
+  - Create the API Route to Register Users
+  - Create the Form Component
+  - Create the Account Registration Page
 
 Read the entire article here: [https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/](https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/)
 
@@ -40,16 +40,16 @@ In this article, you will learn how to integrate custom login and signup pages w
 
 - Run the NextAuth Project on your Computer
 - Test the NextAuth Project
-    - Register an Account
-    - Log into your Account
-    - Access a Protected Page
+  - Register an Account
+  - Log into your Account
+  - Access a Protected Page
 - Configure the NextAuth API Endpoint
 - Create the Custom Login Page
-    - Create the Login Form
-    - Create the Login Page
+  - Create the Login Form
+  - Create the Login Page
 - Create the Custom SignUp Page
-    - Create the SignUp Form
-    - Create the Account Registration Page
+  - Create the SignUp Form
+  - Create the Account Registration Page
 - Create the API Handler for Account Registration
 - Conclusion
 
@@ -64,20 +64,19 @@ In this article, you will learn how to integrate Google and GitHub OAuth provide
 ### Topics Covered
 
 - Run the NextAuth Project Locally
-- Explore the GitHub and Google OAuth Flow
-    - Sign in with Google OAuth2
-    - Sign in with GitHub OAuth
+- Explore the GitHub Flow
+  - Sign in with GitHub OAuth
 - Configure NextAuth with Google and GitHub OAuth
-- Implement the Google and GitHub OAuth2
-    - Create the Client-Side Form
-    - Create the Server-Side Page Component
-- How to Generate the Google OAuth2 Credentials
+- Implement the GitHub OAuth2
+  - Create the Client-Side Form
+  - Create the Server-Side Page Component
 - How to Generate the GitHub OAuth Credentials
 - Conclusion
 
 Read the entire article here: [https://codevoweb.com/nextjs-add-google-and-github-oauth2-using-nextauth-js/](https://codevoweb.com/nextjs-add-google-and-github-oauth2-using-nextauth-js/)
 
+# email-composer
 
 # email-composer
-# email-composer
+
 # email-composer
