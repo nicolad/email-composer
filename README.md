@@ -75,8 +75,6 @@ In this article, you will learn how to integrate Google and GitHub OAuth provide
 
 Read the entire article here: [https://codevoweb.com/nextjs-add-google-and-github-oauth2-using-nextauth-js/](https://codevoweb.com/nextjs-add-google-and-github-oauth2-using-nextauth-js/)
 
-# email-composer
+# Based on: https://github.com/wpcodevo/nextauth-nextjs13-prisma
 
-# email-composer
-
-# email-composer
+https://github.com/cschroeter/park-ui
