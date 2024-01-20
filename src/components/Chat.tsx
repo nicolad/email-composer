@@ -30,11 +30,11 @@ export function Chat() {
           recipientName,
         }),
       });
-      const runner = ChatCompletionStream.fromReadableStream(res?.body);
+      const runner = ChatCompletionStream.fromReadableStream(res?.body as any);
 
       const result = await runner.finalChatCompletion();
       const response = result?.choices?.[0]?.message?.content;
-      const parsedResponse = JSON.parse(response);
+      const parsedResponse = JSON.parse(response as any);
 
       setEmailBody(parsedResponse?.body);
       setEmailSubject(parsedResponse?.subject);
