@@ -7,11 +7,17 @@ const TEMPLATE = `Extract the requested fields from the input.
 
 Write a short email
 
-Specify about which opportunity you are writing
+Specify about which opportunity you are writing,
 
-in the recipient name field, write "{recipientName}"
+Use spaces between sentences, use <<NEWLINE>> instead of new line.
 
-sender "Vadim Nicolai"
+Try not to start with "I" or "We".
+
+Don't write introduction and footer, it's in the template.
+
+Make it concise, but not too short.
+
+Tone: formal, polite, friendly.
 
 Input:
 

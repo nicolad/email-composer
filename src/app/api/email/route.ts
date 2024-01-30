@@ -1,40 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer, { SentMessageInfo } from "nodemailer";
 import { PrismaClient } from "@prisma/client";
+import { Resend } from "resend";
+import { EmailTemplate } from "@/components/EmailTemplate";
 
 const prisma = new PrismaClient();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
-    const { body, subject, emailAddress } = await req?.json();
-    const html = body.replace(/\n/g, "<br>");
+    const { body, subject, emailAddress, firstName } = await req?.json();
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.MAILER_USERNAME,
-        pass: process.env.GOOGLE_APP_PASSWORD,
-      },
+    const { data, error } = await resend.emails.send({
+      from: "Vadim Nicolai <contact@vadim.blog>",
+      bcc: ["nicolai.vadim@gmail.com"],
+      to: [emailAddress],
+      subject,
+      text: "",
+      react: EmailTemplate({
+        body,
+        firstName,
+      }),
     });
 
-    const info: SentMessageInfo = await transporter.sendMail({
-      from: "nicolai.vadim@gmail.com",
-      to: emailAddress,
-      subject: subject,
-      html,
-      bcc: "nicolai.vadim@gmail.com",
-    });
+    console.log(error);
 
-    if (info.messageId) {
+    if (!error) {
       const sentEmail = await prisma.sentEmail.create({
         data: {
-          from: "nicolai.vadim@gmail.com", // Or the actual sender's email
           to: emailAddress,
           subject: subject,
-          body: body, // or `html` if you want to store the HTML version
-          userId: "your-user-id", // Replace with the actual user ID, if applicable
+          body: body,
+          userId: "d174ea22-c8e2-406a-a7ed-eecf26086dd7",
         },
       });
 
@@ -43,6 +39,11 @@ export async function POST(req: NextRequest) {
         { status: 200 }
       );
     }
+
+    return NextResponse.json(
+      "There was an error sending the email. Please try again.",
+      { status: 500 }
+    );
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }

@@ -50,15 +50,9 @@ export function Chat() {
         emailAddress,
         subject: emailSubject,
         body: emailBody,
-        recipientName,
+        firstName: recipientName,
       });
       console.log(response);
-      // const { data } = await supabase.from("emails").insert({
-      //   recipient: emailAddress,
-      //   subject: emailSubject,
-      //   body: emailBody,
-      //   sent_at: new Date(),
-      // });
     } catch (error) {
       console.error("Error:", error);
     }
