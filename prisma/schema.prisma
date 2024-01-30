@@ -10,6 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model SentEmail {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+  to          String   @map("to_email")
+  subject     String
+  body        String   @db.Text
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sent_emails")
+}
+
 model User {
   id            String    @id @default(uuid())
   name          String
@@ -21,6 +33,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  sentEmails  SentEmail[]
 
   @@map("users")
 }
